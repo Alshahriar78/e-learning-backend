@@ -7,6 +7,7 @@ import {
   getMyProducts,
   getAllUsers,
   updateUserRole,
+  getUserDashboard
 } from "./user.controller.js";
 
 import { protect } from "../../middlewares/auth.middleware.js";
@@ -16,12 +17,15 @@ const router = express.Router();
 
 // Logged-in user routes
 router.get("/me", protect, getMyProfile);
-router.put("/me", protect, updateMyProfile);
+router.patch("/me", protect, updateMyProfile);
 router.get("/me/courses", protect, getMyCourses);
 router.get("/me/products", protect, getMyProducts);
 
 // Admin routes
 router.get("/", protect, adminOnly, getAllUsers);
 router.patch("/:id/role", protect, adminOnly, updateUserRole);
+
+// Dashboard for logged-in user
+router.get("/dashboard", protect, getUserDashboard); 
 
 export default router;

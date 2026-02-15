@@ -50,24 +50,16 @@ export const getCourses = asyncHandler(async (req, res) => {
 
 /** GET SINGLE COURSE (PAID CHECK) */
 export const getCourse = asyncHandler(async (req, res) => {
-  const course = await Course.findById(req.params.id);
+  const {id} = req.params;
+  const course = await Course.findById(id)
+  .populate("category");
+
   if (!course) throw new Error("Course not found");
 
   // Free course → allowed
   if (course.isFree) return res.json(course);
 
-  // Paid course → check enrollment
-  const enrollment = await Enrollment.findOne({
-    user: req.user._id,
-    course: course._id,
-    status: "PAID",
-  });
-
-  if (!enrollment) {
-    return res.status(403).json({
-      message: "Please enroll in this course to access content",
-    });
-  }
+  
 
   res.json(course);
 });

@@ -18,6 +18,7 @@ import enrollmentRoutes from "./modules/enrollment/enrollment.routes.js";
 const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
+  "http://localhost:5173",
   
   "https://your-frontend-domain.com"
 ];

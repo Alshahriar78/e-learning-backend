@@ -37,6 +37,6 @@ router.delete("/:id", protect, adminOnly, deleteCourse);
  * PUBLIC / USER ROUTES
  */
 router.get("/", getCourses);
-router.get("/:id", protect, getCourse);
+router.get("/:id", getCourse);
 
 export default router;

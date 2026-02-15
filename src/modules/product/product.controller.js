@@ -57,10 +57,10 @@ export const getProduct = asyncHandler(async (req, res) => {
   if (!product) throw new Error("Product not found");
 
   // Check if user purchased
-  const isPurchased = req.user.purchasedProducts.includes(product._id);
-  if (!isPurchased && req.user.role !== "ADMIN") {
-    throw new Error("Access denied. Please purchase product.");
-  }
+  // const isPurchased = req.user.purchasedProducts.includes(product._id);
+  // if (!isPurchased && req.user.role !== "ADMIN") {
+  //   throw new Error("Access denied. Please purchase product.");
+  // }
 
   res.json(product);
 });

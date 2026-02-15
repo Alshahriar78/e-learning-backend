@@ -19,8 +19,8 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:3000",
   "http://localhost:5173",
-  "https://e-learning-admin-1ylq.onrender.com/",
-  "https://your-frontend-domain.com"
+  "https://e-learning-admin-1ylq.onrender.com",
+  "https://your-frontend-domain.com",
 ];
 app.use(
   cors({
